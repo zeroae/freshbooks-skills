@@ -1,0 +1,6 @@
+{
+  "name": "freshbooks-skills",
+  "version": "0.1.0",
+  "description": "Guided workflows for FreshBooks: invoicing, time billing, financial reports, month-end close, expense tracking, and client onboarding",
+  "skills": "./skills/"
+}
