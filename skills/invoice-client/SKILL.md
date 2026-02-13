@@ -7,7 +7,7 @@ description: Create and send a FreshBooks invoice. Use when the user wants to bi
 
 Create and send a FreshBooks invoice through a guided conversation.
 
-For API patterns (ID systems, pagination), see [references/freshbooks-api-patterns.md](../references/freshbooks-api-patterns.md).
+For API patterns and output format, see [references/freshbooks-api-patterns.md](../references/freshbooks-api-patterns.md).
 
 ## Flow
 

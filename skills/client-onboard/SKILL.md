@@ -7,7 +7,7 @@ description: Set up a new FreshBooks client with optional project and estimate. 
 
 Set up a new client, optionally creating a project and estimate.
 
-For API patterns (ID systems, pagination), see [references/freshbooks-api-patterns.md](../references/freshbooks-api-patterns.md).
+For API patterns and output format, see [references/freshbooks-api-patterns.md](../references/freshbooks-api-patterns.md).
 
 ## Flow
 

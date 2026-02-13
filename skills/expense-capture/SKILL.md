@@ -7,7 +7,7 @@ description: Quickly log a FreshBooks expense with smart category suggestions. U
 
 Quickly log an expense with smart category suggestion.
 
-For API patterns (ID systems, pagination), see [references/freshbooks-api-patterns.md](../references/freshbooks-api-patterns.md).
+For API patterns and output format, see [references/freshbooks-api-patterns.md](../references/freshbooks-api-patterns.md).
 
 ## Flow
 

@@ -7,7 +7,7 @@ description: Convert tracked time entries into an invoice. Use when the user wan
 
 Convert tracked time entries into a FreshBooks invoice.
 
-For API patterns (ID systems, pagination), see [references/freshbooks-api-patterns.md](../references/freshbooks-api-patterns.md).
+For API patterns and output format, see [references/freshbooks-api-patterns.md](../references/freshbooks-api-patterns.md).
 
 ## Flow
 

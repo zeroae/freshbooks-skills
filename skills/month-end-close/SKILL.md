@@ -7,7 +7,7 @@ description: Guided month-end bookkeeping checklist. Use when the user wants to 
 
 Walk through a structured month-end bookkeeping checklist.
 
-For API patterns (ID systems, pagination), see [references/freshbooks-api-patterns.md](../references/freshbooks-api-patterns.md).
+For API patterns and output format, see [references/freshbooks-api-patterns.md](../references/freshbooks-api-patterns.md).
 
 ## Flow
 
