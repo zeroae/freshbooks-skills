@@ -7,64 +7,15 @@ description: Convert tracked time entries into an invoice. Use when the user wan
 
 Convert tracked time entries into a FreshBooks invoice.
 
-## Prerequisites
-
-Ensure the FreshBooks MCP server is connected.
+For API patterns (ID systems, pagination), see [references/freshbooks-api-patterns.md](../references/freshbooks-api-patterns.md).
 
 ## Flow
 
-### Step 1: Bootstrap
-
-Call `freshbooks_get_current_user` to get `account_id` and `business_id`.
-
-### Step 2: Identify Time Entries
-
-Ask the user:
-- Which **project** (by name — resolve using `resolve-entity` with `entity_type="project"`)
-- What **date range** (default: current month)
-
-### Step 3: Fetch Unbilled Time
-
-Use the `review-unbilled-time` prompt to fetch and summarize unbilled time entries.
-
-Present:
-```
-Unbilled Time Summary
-─────────────────────
-Project: [Name]
-Period: [start] to [end]
-
-  [Date]  [Duration]  [Service]     [Note]
-  Jan 15  2.5 hrs     Consulting    Client meeting + follow-up
-  Jan 16  4.0 hrs     Development   Feature implementation
-  ...
-
-Total: [X] hours across [Y] entries
-Estimated value: $[amount] (at $[rate]/hr)
-```
-
-### Step 4: Select Entries
-
-Ask: "Include all entries, or would you like to exclude any?"
-
-If the user wants to exclude some, let them pick by number.
-
-### Step 5: Resolve Client
-
-The project should be linked to a client. If not, ask who to invoice and resolve via `resolve-entity`.
-
-### Step 6: Preview Invoice
-
-Show preview with time entries grouped as line items.
-
-### Step 7: Create Invoice (CONFIRM FIRST)
-
-**IMPORTANT: Ask for explicit confirmation before creating.**
-
-Say: "Create invoice for [X] hours ($[amount]) to [client]?"
-
-Call `freshbooks_create_invoice` after confirmation.
-
-### Step 8: Send or Save
-
-Same as invoice-client Step 7.
+1. **Bootstrap** — Call `freshbooks_get_current_user` to get `account_id` and `business_id`.
+2. **Identify project** — Ask which project and date range (default: current month). Resolve project name via `resolve-entity` prompt with `entity_type="project"`.
+3. **Fetch unbilled time** — Use `review-unbilled-time` prompt. Show entries grouped by project with hours, date range, estimated value.
+4. **Select entries** — Ask: "Include all entries, or exclude any?" Let user pick by number.
+5. **Resolve client** — Get client from project link. If unlinked, resolve via `resolve-entity`.
+6. **Preview** — Show time entries as line items with totals.
+7. **Create invoice** — `freshbooks_create_invoice`. **CONFIRM FIRST:** "Create invoice for [X] hours ($[amount]) to [client]?"
+8. **Send or save** — Same as invoice-client step 7.

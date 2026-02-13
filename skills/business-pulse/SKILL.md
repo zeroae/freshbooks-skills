@@ -5,70 +5,17 @@ description: Get a plain-English financial health summary of your business. Use 
 
 # Business Pulse
 
-Generate a comprehensive financial health snapshot — fully autonomous (all read-only).
+Fully autonomous, read-only financial health snapshot. No confirmations needed.
 
-## Prerequisites
-
-Ensure the FreshBooks MCP server is connected.
+For API patterns (ID systems, pagination), see [references/freshbooks-api-patterns.md](../references/freshbooks-api-patterns.md).
 
 ## Flow
 
-### Step 1: Bootstrap
-
-Call `freshbooks_get_current_user` to get `account_id`, `business_id`, and `business_uuid`.
-
-### Step 2: Determine Date Range
-
-If the user specified a period, use it. Otherwise default to the current calendar month.
-
-For comparison data, also calculate the previous period (e.g., last month if current period is this month).
-
-### Step 3: Pull Reports (Parallel)
-
-All of these are read-only — execute without confirmation:
-
-1. Use `summarize-reports` prompt with current period dates
-2. Use `review-outstanding` prompt for AR aging
-3. Call `freshbooks_list_expenses` with current period for expense breakdown
-
-Run the report calls in parallel for speed.
-
-### Step 4: Present Summary
-
-Format as a clear business dashboard:
-
-```
-Business Pulse — [Business Name]
-Period: [Start] to [End]
-══════════════════════════════════
-
-Revenue & Profit
-  Revenue:    $XX,XXX    (↑/↓ X% vs last period)
-  Expenses:   $XX,XXX
-  Net Profit: $XX,XXX
-
-Cash Position
-  Current Cash: $XX,XXX
-  Cash Flow:    +/- $X,XXX this period
-
-Accounts Receivable
-  Total Outstanding: $XX,XXX
-  Current:     $X,XXX (N invoices)
-  0-30 days:   $X,XXX (N invoices)
-  31-60 days:  $X,XXX (N invoices)
-  60+ days:    $X,XXX (N invoices)  ⚠️
-
-Top Expense Categories
-  1. [Category]: $X,XXX
-  2. [Category]: $X,XXX
-  3. [Category]: $X,XXX
-```
-
-### Step 5: Key Takeaways
-
-End with 2-3 actionable insights:
-- Flag overdue invoices that need follow-up
-- Note unusual expense spikes
-- Highlight positive trends
-
-Do NOT ask for confirmation at any point — this is entirely read-only.
+1. **Bootstrap** — Call `freshbooks_get_current_user` to get all three IDs.
+2. **Date range** — Use user-specified period or default to current calendar month. Calculate previous period for comparison.
+3. **Pull reports (parallel, all read-only)**:
+   - `summarize-reports` prompt for P&L, balance sheet, cash flow
+   - `review-outstanding` prompt for AR aging
+   - `freshbooks_list_expenses` for expense breakdown
+4. **Present dashboard** — Revenue & profit, cash position, AR aging buckets, top expense categories. Use currency formatting, flag concerning numbers.
+5. **Key takeaways** — 2-3 actionable insights: overdue invoices needing follow-up, unusual expense spikes, positive trends.
