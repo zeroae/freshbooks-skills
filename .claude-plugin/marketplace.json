@@ -1,0 +1,20 @@
+{
+  "name": "freshbooks-skills",
+  "owner": {
+    "name": "ZeroAE"
+  },
+  "metadata": {
+    "description": "Guided workflows for FreshBooks: invoicing, time billing, reports, and bookkeeping"
+  },
+  "plugins": [
+    {
+      "name": "freshbooks-skills",
+      "source": ".",
+      "description": "Guided workflows for FreshBooks: invoicing, time billing, financial reports, month-end close, expense tracking, and client onboarding",
+      "version": "0.1.0",
+      "homepage": "https://freshbooks.dev.zeroae.com",
+      "license": "MIT",
+      "keywords": ["freshbooks", "accounting", "invoicing", "bookkeeping"]
+    }
+  ]
+}
