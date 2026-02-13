@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "freshbooks": {
+      "type": "http",
+      "url": "https://freshbooks.dev.zeroae.com/mcp"
+    }
+  }
+}
